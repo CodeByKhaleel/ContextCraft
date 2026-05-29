@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { GlobalSearch } from "@/components/global-search";
 import { SiteHeader } from "@/components/site-header";
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         {children}
         <GlobalSearch prompts={prompts} concepts={concepts} workflows={workflows} />
+        <Analytics />
       </body>
     </html>
   );
