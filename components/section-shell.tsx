@@ -8,6 +8,7 @@ const sidebar = [
   { href: "/context-engineering", label: "Context Engineering" },
   { href: "/prompts", label: "Prompt Library" },
   { href: "/workflows", label: "AI Workflows" },
+  { href: "/tools", label: "AI Tools & Agents" },
   { href: "/limitations", label: "Limitations" },
 ];
 
