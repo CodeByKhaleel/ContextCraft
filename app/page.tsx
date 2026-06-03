@@ -78,44 +78,44 @@ const featureCards = [
 export default function HomePage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#02030d] text-white">
-      <section className="relative px-3 pb-10 pt-5 sm:px-5 lg:px-8">
+      <section className="relative px-2 pb-8 pt-4 sm:px-5 sm:pb-10 lg:px-8">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(56,189,248,0.22),transparent_34rem),radial-gradient(circle_at_80%_10%,rgba(124,58,237,0.2),transparent_30rem),linear-gradient(180deg,#030414_0%,#050617_52%,#02030d_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(56,189,248,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.05)_1px,transparent_1px)] bg-[size:56px_56px] opacity-50" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-56 border-t border-cyan-300/60 shadow-[inset_0_1px_0_rgba(125,211,252,0.8),0_0_80px_rgba(14,165,233,0.32)]" />
 
         <div className="relative mx-auto max-w-[1440px]">
-          <div className="mx-auto max-w-5xl px-4 pb-8 pt-12 text-center sm:pt-16">
-            <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+          <div className="mx-auto max-w-5xl px-2 pb-6 pt-8 text-center sm:px-4 sm:pb-8 sm:pt-16">
+            <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Practical AI Prompts, Context, and Workflows
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400">
               ContextCraft helps developers turn vague AI requests into clear prompts, packed
               context, and repeatable workflows they can copy and verify.
             </p>
-            <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center">
               <Link
                 href="/prompts"
-                className="inline-flex h-11 items-center gap-2 rounded-md bg-cyan-300 px-4 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-cyan-300 px-4 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
               >
                 Browse Prompts
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/workflows"
-                className="inline-flex h-11 items-center gap-2 rounded-md border border-white/10 bg-white/[0.055] px-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/45 hover:bg-cyan-300/10"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.055] px-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/45 hover:bg-cyan-300/10"
               >
                 Open Workflows
               </Link>
               <Link
                 href="/basics"
-                className="inline-flex h-11 items-center gap-2 rounded-md border border-white/10 bg-white/[0.035] px-4 text-sm font-semibold text-slate-300 transition hover:border-cyan-300/45 hover:text-cyan-100"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.035] px-4 text-sm font-semibold text-slate-300 transition hover:border-cyan-300/45 hover:text-cyan-100"
               >
                 Learn Basics
               </Link>
             </div>
           </div>
 
-          <div className="grid min-h-[520px] overflow-hidden rounded-xl border border-white/12 bg-white/[0.035] shadow-[0_28px_120px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl lg:grid-cols-[290px_minmax(420px,1fr)_minmax(380px,0.95fr)]">
+          <div className="grid overflow-hidden rounded-lg border border-white/12 bg-white/[0.035] shadow-[0_28px_120px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl lg:min-h-[520px] lg:grid-cols-[290px_minmax(420px,1fr)_minmax(380px,0.95fr)]">
             <aside className="border-b border-white/10 bg-slate-950/20 p-4 lg:border-b-0 lg:border-r">
               <h2 className="text-base font-semibold">Cheatsheet</h2>
               <p className="mt-3 text-sm text-slate-400">Developer Tools</p>
@@ -158,7 +158,7 @@ export default function HomePage() {
             </aside>
 
             <section className="border-b border-white/10 bg-slate-950/16 lg:border-b-0 lg:border-r">
-              <div className="flex h-14 items-center justify-between border-b border-white/10 px-4">
+              <div className="flex min-h-14 flex-wrap items-center justify-between gap-2 border-b border-white/10 px-4 py-2 sm:h-14 sm:flex-nowrap sm:py-0">
                 <h2 className="font-semibold">Prompt Playground</h2>
                 <div className="flex items-center gap-2">
                   <button className="inline-flex h-8 items-center gap-2 rounded-md border border-white/10 bg-white/[0.055] px-3 text-xs text-slate-300">
@@ -173,13 +173,13 @@ export default function HomePage() {
                   </button>
                 </div>
               </div>
-              <div className="p-5">
-                <div className="rounded-lg border border-white/10 bg-slate-900/35 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+              <div className="p-3 sm:p-5">
+                <div className="rounded-lg border border-white/10 bg-slate-900/35 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:p-4">
                   <div className="mb-3 flex items-center justify-between text-sm">
                     <span className="font-medium text-slate-200">Input Prompt</span>
                     <span className="text-xs text-slate-500">draft</span>
                   </div>
-                  <pre className="min-h-[220px] whitespace-pre-wrap rounded-lg border border-cyan-200/10 bg-[#0b1024]/70 p-5 font-mono text-sm leading-6 text-slate-300 shadow-[inset_0_0_24px_rgba(14,165,233,0.06)]">
+                  <pre className="min-h-40 whitespace-pre-wrap rounded-lg border border-cyan-200/10 bg-[#0b1024]/70 p-3 font-mono text-xs leading-6 text-slate-300 shadow-[inset_0_0_24px_rgba(14,165,233,0.06)] sm:min-h-[220px] sm:p-5 sm:text-sm">
 {`1  Analyze the regression in payment reconciliation
 2  against serialized logs and contract tests.
 3  Identify the smallest safe change and include
@@ -202,7 +202,7 @@ export default function HomePage() {
             </section>
 
             <section className="bg-slate-950/16">
-              <div className="flex h-14 items-center justify-between border-b border-white/10 px-4">
+              <div className="flex min-h-14 flex-wrap items-center justify-between gap-2 border-b border-white/10 px-4 py-2 sm:h-14 sm:flex-nowrap sm:py-0">
                 <h2 className="font-semibold">Context Pipeline</h2>
                 <div className="flex items-center gap-2">
                   <span className="rounded-md border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs text-cyan-100">
@@ -213,8 +213,8 @@ export default function HomePage() {
                   </button>
                 </div>
               </div>
-              <div className="p-5">
-                <div className="relative min-h-[360px] overflow-hidden rounded-xl border border-cyan-200/12 bg-[#030716]/72 shadow-[inset_0_0_80px_rgba(14,165,233,0.08)]">
+              <div className="p-3 sm:p-5">
+                <div className="relative hidden min-h-[360px] overflow-hidden rounded-xl border border-cyan-200/12 bg-[#030716]/72 shadow-[inset_0_0_80px_rgba(14,165,233,0.08)] sm:block">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(34,211,238,0.18),transparent_38%),linear-gradient(rgba(56,189,248,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.04)_1px,transparent_1px)] bg-[size:auto,34px_34px,34px_34px]" />
                   <div className="absolute left-[8%] top-[42%] flex items-center gap-3">
                     <PipelineNode icon={FileInput} label="Input" sublabel="Data" />
@@ -241,13 +241,39 @@ export default function HomePage() {
                   <div className="absolute left-[22%] top-[23%] h-28 w-[56%] rounded-t-full border-x-2 border-t-2 border-cyan-300/70 shadow-[0_0_18px_rgba(34,211,238,0.5)]" />
                   <div className="absolute bottom-[22%] left-[19%] h-24 w-[62%] rounded-b-2xl border-x-2 border-b-2 border-cyan-300/70 shadow-[0_0_18px_rgba(34,211,238,0.5)]" />
                 </div>
+                <div className="rounded-lg border border-cyan-200/12 bg-[#030716]/72 p-4 shadow-[inset_0_0_60px_rgba(14,165,233,0.08)] sm:hidden">
+                  <div className="grid gap-3">
+                    {[
+                      { icon: FileInput, label: "Goal", sublabel: "What the answer must solve" },
+                      { icon: Gauge, label: "Evidence", sublabel: "Logs, code, facts, examples" },
+                      { icon: Layers3, label: "Context", sublabel: "Only the useful parts" },
+                      { icon: Bot, label: "Model", sublabel: "Reason from packed input" },
+                      { icon: FileOutput, label: "Output", sublabel: "Fix, risks, and checks" },
+                    ].map((item, index, list) => (
+                      <div key={item.label}>
+                        <div className="flex items-center gap-3 rounded-lg border border-cyan-300/20 bg-cyan-300/10 p-3">
+                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-slate-950/45 text-cyan-100">
+                            <item.icon className="h-5 w-5" />
+                          </span>
+                          <span>
+                            <span className="block text-sm font-semibold text-cyan-50">{item.label}</span>
+                            <span className="block text-xs leading-5 text-slate-400">{item.sublabel}</span>
+                          </span>
+                        </div>
+                        {index < list.length - 1 ? (
+                          <div className="ml-5 h-4 w-px bg-cyan-300/45 shadow-[0_0_10px_rgba(34,211,238,0.65)]" />
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </section>
           </div>
         </div>
       </section>
 
-      <section className="relative mx-auto grid max-w-[1440px] gap-4 px-5 pb-16 lg:grid-cols-4 lg:px-8">
+      <section className="relative mx-auto grid max-w-[1440px] gap-4 px-3 pb-16 sm:grid-cols-2 sm:px-5 lg:grid-cols-4 lg:px-8">
         {featureCards.map((item) => (
           <Link
             key={item.href}
