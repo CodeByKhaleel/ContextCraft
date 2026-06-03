@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ConceptList } from "@/components/concept-list";
+import { ConceptExplorer } from "@/components/concept-explorer";
 import { PageHeading } from "@/components/page-heading";
 import { SectionShell } from "@/components/section-shell";
 import { concepts } from "@/data/concepts";
@@ -17,7 +17,7 @@ export default function BasicsPage() {
         title="Core ideas before advanced prompting"
         description="Learn the vocabulary and mental models behind effective AI work."
       />
-      <ConceptList concepts={concepts.filter((concept) => concept.section === "basics")} />
+      <ConceptExplorer concepts={concepts} lockedSection="basics" />
     </SectionShell>
   );
 }
