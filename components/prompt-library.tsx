@@ -68,11 +68,11 @@ export function PromptLibrary({
             className="h-11 w-full rounded-md border border-white/10 bg-slate-950/45 pl-10 pr-3 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/45 focus:ring-2 focus:ring-cyan-300/25"
           />
         </label>
-        <div className="mt-4 flex flex-wrap gap-3">
+        <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
           <select
             value={category}
             onChange={(event) => setCategory(event.target.value as typeof category)}
-            className="h-10 rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100"
+            className="h-10 w-full rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100 sm:w-auto"
             aria-label="Prompt category"
           >
             {categories.map((item) => (
@@ -84,7 +84,7 @@ export function PromptLibrary({
           <select
             value={difficulty}
             onChange={(event) => setDifficulty(event.target.value as typeof difficulty)}
-            className="h-10 rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100"
+            className="h-10 w-full rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100 sm:w-auto"
             aria-label="Prompt difficulty"
           >
             {difficulties.map((item) => (
