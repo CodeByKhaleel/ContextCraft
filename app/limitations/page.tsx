@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ConceptList } from "@/components/concept-list";
+import { ConceptExplorer } from "@/components/concept-explorer";
 import { PageHeading } from "@/components/page-heading";
 import { SectionShell } from "@/components/section-shell";
 import { concepts } from "@/data/concepts";
@@ -17,7 +17,7 @@ export default function LimitationsPage() {
         title="Use AI output with verification, not blind trust"
         description="AI systems can be useful and wrong at the same time. Build workflows that separate evidence, assumptions, and decisions."
       />
-      <ConceptList concepts={concepts.filter((concept) => concept.section === "limitations")} />
+      <ConceptExplorer concepts={concepts} lockedSection="limitations" />
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {[
           "Verify current facts against primary sources.",
