@@ -5,6 +5,7 @@ import { GlobalSearch } from "@/components/global-search";
 import { SiteHeader } from "@/components/site-header";
 import { concepts } from "@/data/concepts";
 import { prompts } from "@/data/prompts";
+import { aiTools } from "@/data/tools";
 import { workflows } from "@/data/workflows";
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="min-h-screen font-sans antialiased">
         <SiteHeader />
         {children}
-        <GlobalSearch prompts={prompts} concepts={concepts} workflows={workflows} />
+        <GlobalSearch prompts={prompts} concepts={concepts} workflows={workflows} tools={aiTools} />
         <Analytics />
       </body>
     </html>
