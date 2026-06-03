@@ -46,20 +46,20 @@ export default async function ConceptPage({ params }: PageProps) {
           {titleCase(concept.section)}
         </Link>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{concept.title}</h1>
-        <p className="mt-4 text-lg leading-8 text-slate-400">{concept.summary}</p>
+        <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">{concept.summary}</p>
       </div>
 
       <div className="grid gap-5 lg:grid-cols-[1fr_300px]">
         <article className="space-y-5">
-          <section className="glass-card p-5">
+          <section className="glass-card p-4 sm:p-5">
             <h2 className="text-xl font-semibold text-white">Why it matters</h2>
             <p className="mt-3 leading-7 text-slate-400">{concept.whyItMatters}</p>
           </section>
-          <section className="glass-card p-5">
+          <section className="glass-card p-4 sm:p-5">
             <h2 className="text-xl font-semibold text-white">Practical example</h2>
             <p className="mt-3 leading-7 text-slate-400">{concept.example}</p>
           </section>
-          <section className="glass-card p-5">
+          <section className="glass-card p-4 sm:p-5">
             <h2 className="text-xl font-semibold text-white">Common mistakes</h2>
             <ul className="mt-3 space-y-2 text-slate-400">
               {concept.commonMistakes.map((mistake) => (
@@ -72,7 +72,7 @@ export default async function ConceptPage({ params }: PageProps) {
           </section>
         </article>
         <aside className="space-y-5">
-          <div className="glass-card p-5">
+          <div className="glass-card p-4 sm:p-5">
             <h2 className="font-semibold text-white">Related workflows</h2>
             <div className="mt-3 space-y-2">
               {relatedWorkflows.length ? (
@@ -86,7 +86,7 @@ export default async function ConceptPage({ params }: PageProps) {
               )}
             </div>
           </div>
-          <div className="glass-card p-5">
+          <div className="glass-card p-4 sm:p-5">
             <h2 className="font-semibold text-white">Next practical step</h2>
             <p className="mt-2 text-sm leading-6 text-slate-400">
               Apply this concept with a copy-ready prompt or a repeatable workflow.
