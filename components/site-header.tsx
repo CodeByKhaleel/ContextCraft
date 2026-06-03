@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AlertTriangle, BookOpen, Bot, Braces, GitBranch, Menu, Search, Workflow, X } from "lucide-react";
+import { AlertTriangle, BookOpen, Bot, Braces, Boxes, GitBranch, Menu, Search, Workflow, X } from "lucide-react";
 import { useState } from "react";
 import { concepts } from "@/data/concepts";
 
@@ -12,6 +12,7 @@ const navItems = [
   { href: "/context-engineering", label: "Context", icon: GitBranch },
   { href: "/prompts", label: "Prompts", icon: Bot },
   { href: "/workflows", label: "Workflows", icon: Workflow },
+  { href: "/tools", label: "Tools", icon: Boxes },
   { href: "/limitations", label: "Limits", icon: AlertTriangle },
 ];
 
