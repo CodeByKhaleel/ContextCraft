@@ -76,27 +76,27 @@ export function GlobalSearch({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-background/80 p-4 backdrop-blur">
-      <div className="mx-auto mt-20 max-w-2xl rounded-lg border border-border bg-card shadow-soft">
-        <div className="flex items-center gap-3 border-b border-border p-4">
-          <Search className="h-5 w-5 text-muted-foreground" />
+    <div className="fixed inset-0 z-50 bg-background/80 p-2 backdrop-blur sm:p-4">
+      <div className="mx-auto mt-3 max-w-2xl rounded-lg border border-border bg-card shadow-soft sm:mt-20">
+        <div className="flex items-center gap-2 border-b border-border p-3 sm:gap-3 sm:p-4">
+          <Search className="h-5 w-5 shrink-0 text-muted-foreground" />
           <input
             autoFocus
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search ContextCraft..."
-            className="h-10 flex-1 bg-transparent text-base outline-none"
+            className="h-10 min-w-0 flex-1 bg-transparent text-base outline-none"
           />
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="grid h-9 w-9 place-items-center rounded-md hover:bg-accent"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-md hover:bg-accent"
             aria-label="Close search"
           >
             <X className="h-4 w-4" />
           </button>
         </div>
-        <div className="max-h-[55vh] overflow-auto p-2">
+        <div className="max-h-[78vh] overflow-auto p-2 sm:max-h-[55vh]">
           {results.map((item) => (
             <Link
               key={`${item.type}-${item.title}`}
@@ -104,9 +104,9 @@ export function GlobalSearch({
               onClick={() => setOpen(false)}
               className="block rounded-md p-3 transition hover:bg-accent"
             >
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex items-start justify-between gap-3">
                 <h3 className="font-medium">{item.title}</h3>
-                <span className="rounded border border-border px-2 py-1 text-xs text-muted-foreground">
+                <span className="shrink-0 rounded border border-border px-2 py-1 text-xs text-muted-foreground">
                   {item.type}
                 </span>
               </div>
