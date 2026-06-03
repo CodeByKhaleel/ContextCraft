@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ConceptList } from "@/components/concept-list";
+import { ConceptExplorer } from "@/components/concept-explorer";
 import { PageHeading } from "@/components/page-heading";
 import { SectionShell } from "@/components/section-shell";
 import { concepts } from "@/data/concepts";
@@ -27,7 +27,7 @@ export default function ContextEngineeringPage() {
           </div>
         ))}
       </div>
-      <ConceptList concepts={contextConcepts} />
+      <ConceptExplorer concepts={contextConcepts} lockedSection="context-engineering" />
     </SectionShell>
   );
 }
