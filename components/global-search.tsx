@@ -4,7 +4,7 @@ import Fuse from "fuse.js";
 import Link from "next/link";
 import { Search, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import type { ConceptPage, PromptTemplate, Workflow } from "@/types/content";
+import type { AiTool, ConceptPage, PromptTemplate, Workflow } from "@/types/content";
 
 type SearchItem = {
   title: string;
@@ -17,10 +17,12 @@ export function GlobalSearch({
   prompts,
   concepts,
   workflows,
+  tools,
 }: {
   prompts: PromptTemplate[];
   concepts: ConceptPage[];
   workflows: Workflow[];
+  tools: AiTool[];
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -45,8 +47,14 @@ export function GlobalSearch({
         href: `/workflows#${item.id}`,
         type: "Workflow",
       })),
+      ...tools.map((item) => ({
+        title: item.name,
+        description: item.summary,
+        href: "/tools",
+        type: "Tool",
+      })),
     ],
-    [concepts, prompts, workflows],
+    [concepts, prompts, tools, workflows],
   );
 
   const fuse = useMemo(
