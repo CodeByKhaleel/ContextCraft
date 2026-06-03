@@ -48,11 +48,11 @@ export function WorkflowExplorer({
             className="h-11 w-full rounded-md border border-white/10 bg-slate-950/45 pl-10 pr-3 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/45 focus:ring-2 focus:ring-cyan-300/25"
           />
         </label>
-        <div className="mt-4 flex flex-wrap gap-3">
+        <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
           <select
             value={audience}
             onChange={(event) => setAudience(event.target.value as typeof audience)}
-            className="h-10 rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100"
+            className="h-10 w-full rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100 sm:w-auto"
             aria-label="Workflow audience"
           >
             {audiences.map((item) => (
@@ -69,7 +69,7 @@ export function WorkflowExplorer({
 
       <div className="space-y-6">
         {filtered.map((workflow) => (
-          <article key={workflow.id} id={workflow.id} className="glass-card scroll-mt-24 p-5">
+          <article key={workflow.id} id={workflow.id} className="glass-card scroll-mt-24 p-4 sm:p-5">
             <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
               <div>
                 <span className="glass-chip">{titleCase(workflow.audience)}</span>
@@ -82,12 +82,12 @@ export function WorkflowExplorer({
                 const linkedPrompt = findPromptForStep(step.prompt, prompts);
 
                 return (
-                  <li key={step.title} className="rounded-lg border border-white/10 bg-white/[0.035] p-4">
+                  <li key={step.title} className="rounded-lg border border-white/10 bg-white/[0.035] p-3 sm:p-4">
                     <div className="flex gap-3">
                       <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md border border-cyan-300/20 bg-cyan-300/10 text-sm font-semibold text-cyan-100">
                         {index + 1}
                       </span>
-                      <div>
+                      <div className="min-w-0">
                         <h3 className="font-medium text-slate-100">{step.title}</h3>
                         <p className="mt-1 text-sm leading-6 text-slate-400">{step.goal}</p>
                         {step.prompt ? (
