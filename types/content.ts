@@ -50,3 +50,16 @@ export type Workflow = {
     output?: string;
   }[];
 };
+
+export type ToolCategory = "ide-agent" | "terminal-agent" | "cloud-agent" | "model-platform";
+
+export type AiTool = {
+  id: string;
+  name: string;
+  category: ToolCategory;
+  summary: string;
+  bestFor: string[];
+  contextStyle: string;
+  caution: string;
+  href: string;
+};
