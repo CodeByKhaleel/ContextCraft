@@ -22,14 +22,14 @@ import { prompts } from "@/data/prompts";
 import { workflows } from "@/data/workflows";
 
 const cheatsheetTools = [
-  { title: "Token Counter", description: "Type the token detail counter", icon: Gauge },
-  { title: "Diff Viewer", description: "Compare prompt and API components", icon: Diff },
+  { title: "Token Basics", description: "Understand cost, speed, and context limits", icon: Gauge, href: "/concepts/tokens" },
+  { title: "Review Workflow", description: "Compare a change against risks and tests", icon: Diff, href: "/workflows#code-review-system" },
 ];
 
 const templates = [
-  { title: "Debugging Request", description: "Configure the debugging request", icon: Workflow },
-  { title: "Code Review", description: "Review code with constraints", icon: Code2 },
-  { title: "System Prompt", description: "Build a system prompt contract", icon: TerminalSquare },
+  { title: "Debugging Request", description: "Configure the debugging request", icon: Workflow, href: "/prompts?prompt=debug-error-context" },
+  { title: "Code Review", description: "Review code with constraints", icon: Code2, href: "/prompts?prompt=code-review-pass" },
+  { title: "Structured Output", description: "Build a response contract", icon: TerminalSquare, href: "/prompts?prompt=structured-output-json" },
 ];
 
 const tokenChips = [
@@ -86,12 +86,33 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-[1440px]">
           <div className="mx-auto max-w-5xl px-4 pb-8 pt-12 text-center sm:pt-16">
             <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-              Interactive AI Playground & Workflows
+              Practical AI Prompts, Context, and Workflows
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400">
-              Token-aware prompt design, context pipelines, and reusable AI workflows inside one
-              glassmorphic developer interface.
+              ContextCraft helps developers turn vague AI requests into clear prompts, packed
+              context, and repeatable workflows they can copy and verify.
             </p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <Link
+                href="/prompts"
+                className="inline-flex h-11 items-center gap-2 rounded-md bg-cyan-300 px-4 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+              >
+                Browse Prompts
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/workflows"
+                className="inline-flex h-11 items-center gap-2 rounded-md border border-white/10 bg-white/[0.055] px-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/45 hover:bg-cyan-300/10"
+              >
+                Open Workflows
+              </Link>
+              <Link
+                href="/basics"
+                className="inline-flex h-11 items-center gap-2 rounded-md border border-white/10 bg-white/[0.035] px-4 text-sm font-semibold text-slate-300 transition hover:border-cyan-300/45 hover:text-cyan-100"
+              >
+                Learn Basics
+              </Link>
+            </div>
           </div>
 
           <div className="grid min-h-[520px] overflow-hidden rounded-xl border border-white/12 bg-white/[0.035] shadow-[0_28px_120px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl lg:grid-cols-[290px_minmax(420px,1fr)_minmax(380px,0.95fr)]">
@@ -100,9 +121,9 @@ export default function HomePage() {
               <p className="mt-3 text-sm text-slate-400">Developer Tools</p>
               <div className="mt-3 space-y-3">
                 {cheatsheetTools.map((item) => (
-                  <button
+                  <Link
                     key={item.title}
-                    type="button"
+                    href={item.href}
                     className="flex w-full items-center gap-3 rounded-lg border border-white/10 bg-white/[0.055] p-3 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-cyan-300/40 hover:bg-cyan-300/10"
                   >
                     <span className="grid h-10 w-10 place-items-center rounded-md bg-white/[0.065] text-cyan-200">
@@ -112,7 +133,7 @@ export default function HomePage() {
                       <span className="block text-sm font-semibold text-slate-100">{item.title}</span>
                       <span className="block text-xs text-slate-500">{item.description}</span>
                     </span>
-                  </button>
+                  </Link>
                 ))}
               </div>
 
@@ -121,7 +142,7 @@ export default function HomePage() {
                 {templates.map((item) => (
                   <Link
                     key={item.title}
-                    href="/prompts"
+                    href={item.href}
                     className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.055] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-violet-300/40 hover:bg-violet-300/10"
                   >
                     <span className="grid h-10 w-10 place-items-center rounded-md bg-white/[0.065] text-violet-200">
