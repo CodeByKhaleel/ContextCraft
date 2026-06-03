@@ -9,6 +9,7 @@ import {
   FileOutput,
   Gauge,
   GitBranch,
+  Boxes,
   Layers3,
   Library,
   MoreHorizontal,
@@ -72,6 +73,13 @@ const featureCards = [
     description: "Copy-ready prompts organized by job, difficulty, and concept.",
     icon: Library,
     metric: `${prompts.length} prompts`,
+  },
+  {
+    href: "/tools",
+    title: "AI Tools & Agents",
+    description: "Compare Cursor, Claude Code, Codex, opencode, Gemini CLI, and model platforms.",
+    icon: Boxes,
+    metric: "8 tools",
   },
 ];
 
@@ -273,7 +281,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative mx-auto grid max-w-[1440px] gap-4 px-3 pb-16 sm:grid-cols-2 sm:px-5 lg:grid-cols-4 lg:px-8">
+      <section className="relative mx-auto grid max-w-[1440px] gap-4 px-3 pb-16 sm:grid-cols-2 sm:px-5 xl:grid-cols-5 xl:px-8">
         {featureCards.map((item) => (
           <Link
             key={item.href}
