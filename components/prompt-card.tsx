@@ -3,9 +3,20 @@ import { CopyButton } from "@/components/copy-button";
 import { titleCase } from "@/lib/utils";
 import type { PromptTemplate } from "@/types/content";
 
-export function PromptCard({ prompt }: { prompt: PromptTemplate }) {
+export function PromptCard({
+  prompt,
+  highlighted = false,
+}: {
+  prompt: PromptTemplate;
+  highlighted?: boolean;
+}) {
   return (
-    <article className="glass-card p-5">
+    <article
+      id={prompt.id}
+      className={`glass-card scroll-mt-24 p-5 ${
+        highlighted ? "border-cyan-300/60 bg-cyan-300/10 shadow-[0_0_36px_rgba(34,211,238,0.18)]" : ""
+      }`}
+    >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="mb-2 flex flex-wrap gap-2">
