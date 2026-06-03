@@ -36,6 +36,8 @@ export default async function ConceptPage({ params }: PageProps) {
 
   const relatedPrompts = prompts.filter((prompt) => concept.relatedPrompts.includes(prompt.id));
   const relatedWorkflows = workflows.filter((workflow) => concept.relatedWorkflows.includes(workflow.id));
+  const nextPrompt = relatedPrompts[0];
+  const nextWorkflow = relatedWorkflows[0];
 
   return (
     <SectionShell>
@@ -73,11 +75,39 @@ export default async function ConceptPage({ params }: PageProps) {
           <div className="glass-card p-5">
             <h2 className="font-semibold text-white">Related workflows</h2>
             <div className="mt-3 space-y-2">
-              {relatedWorkflows.map((workflow) => (
-                <Link key={workflow.id} href={`/workflows#${workflow.id}`} className="block text-sm text-cyan-200 hover:underline">
-                  {workflow.title}
+              {relatedWorkflows.length ? (
+                relatedWorkflows.map((workflow) => (
+                  <Link key={workflow.id} href={`/workflows#${workflow.id}`} className="block text-sm text-cyan-200 hover:underline">
+                    {workflow.title}
+                  </Link>
+                ))
+              ) : (
+                <p className="text-sm leading-6 text-slate-400">No workflow is linked yet.</p>
+              )}
+            </div>
+          </div>
+          <div className="glass-card p-5">
+            <h2 className="font-semibold text-white">Next practical step</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              Apply this concept with a copy-ready prompt or a repeatable workflow.
+            </p>
+            <div className="mt-4 grid gap-2">
+              {nextPrompt ? (
+                <Link
+                  href={`/prompts?prompt=${nextPrompt.id}`}
+                  className="rounded-md border border-cyan-300/20 bg-cyan-300/10 px-3 py-2 text-sm font-medium text-cyan-100 transition hover:border-cyan-300/45"
+                >
+                  Use {nextPrompt.title}
                 </Link>
-              ))}
+              ) : null}
+              {nextWorkflow ? (
+                <Link
+                  href={`/workflows#${nextWorkflow.id}`}
+                  className="rounded-md border border-white/10 bg-white/[0.045] px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-300/45 hover:text-cyan-100"
+                >
+                  Open {nextWorkflow.title}
+                </Link>
+              ) : null}
             </div>
           </div>
         </aside>
