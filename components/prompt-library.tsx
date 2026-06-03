@@ -2,7 +2,7 @@
 
 import Fuse from "fuse.js";
 import { Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { PromptCard } from "@/components/prompt-card";
 import { cn, titleCase } from "@/lib/utils";
 import type { PromptCategory, PromptTemplate } from "@/types/content";
@@ -18,10 +18,15 @@ const categories: ("all" | PromptCategory)[] = [
 
 const difficulties = ["all", "beginner", "intermediate", "advanced"] as const;
 
-export function PromptLibrary({ prompts }: { prompts: PromptTemplate[] }) {
+export function PromptLibrary({
+  prompts,
+}: {
+  prompts: PromptTemplate[];
+}) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<(typeof categories)[number]>("all");
   const [difficulty, setDifficulty] = useState<(typeof difficulties)[number]>("all");
+  const [selectedPromptId, setSelectedPromptId] = useState<string>();
 
   const fuse = useMemo(
     () =>
@@ -40,6 +45,16 @@ export function PromptLibrary({ prompts }: { prompts: PromptTemplate[] }) {
       return categoryMatch && difficultyMatch;
     });
   }, [category, difficulty, fuse, prompts, query]);
+
+  useEffect(() => {
+    const promptId = new URLSearchParams(window.location.search).get("prompt");
+    if (!promptId) return;
+
+    setSelectedPromptId(promptId);
+    window.requestAnimationFrame(() => {
+      document.getElementById(promptId)?.scrollIntoView({ block: "start" });
+    });
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -86,7 +101,7 @@ export function PromptLibrary({ prompts }: { prompts: PromptTemplate[] }) {
 
       <div className={cn("grid gap-5", filtered.length > 1 && "xl:grid-cols-2")}>
         {filtered.map((prompt) => (
-          <PromptCard key={prompt.id} prompt={prompt} />
+          <PromptCard key={prompt.id} prompt={prompt} highlighted={prompt.id === selectedPromptId} />
         ))}
       </div>
 
