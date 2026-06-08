@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { CopyButton } from "@/components/copy-button";
-import { titleCase } from "@/lib/utils";
+import { replaceVariables, titleCase } from "@/lib/utils";
 import type { PromptTemplate } from "@/types/content";
 
 export function PromptCard({
@@ -10,6 +13,10 @@ export function PromptCard({
   prompt: PromptTemplate;
   highlighted?: boolean;
 }) {
+  const [values, setValues] = useState<Record<string, string>>({});
+
+  const processedPrompt = replaceVariables(prompt.prompt, values);
+
   return (
     <article
       id={prompt.id}
@@ -31,14 +38,50 @@ export function PromptCard({
           <p className="mt-2 text-sm leading-6 text-slate-400">{prompt.description}</p>
         </div>
         <div className="sm:shrink-0">
-          <CopyButton value={prompt.prompt} />
+          <CopyButton value={processedPrompt} />
         </div>
       </div>
+
+      {prompt.variables && prompt.variables.length > 0 && (
+        <div className="mt-6 grid gap-4 border-t border-white/5 pt-6 sm:grid-cols-2">
+          {prompt.variables.map((variable) => (
+            <div key={variable.name} className="space-y-1.5">
+              <label className="text-xs font-medium text-slate-400">
+                {variable.name} <span className="text-slate-600">— {variable.description}</span>
+              </label>
+              <input
+                type="text"
+                placeholder={`e.g. ${variable.example}`}
+                value={values[variable.name] || ""}
+                onChange={(e) =>
+                  setValues((prev) => ({ ...prev, [variable.name]: e.target.value }))
+                }
+                className="w-full rounded-md border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-200 outline-none transition focus:border-cyan-300/40 focus:bg-cyan-300/5"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="mt-4 rounded-lg border border-cyan-200/10 bg-[#0b1024]/70 p-3 shadow-[inset_0_0_24px_rgba(14,165,233,0.06)] sm:p-4">
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+            Prompt Preview
+          </span>
+          {Object.keys(values).length > 0 && (
+            <button
+              onClick={() => setValues({})}
+              className="text-[10px] font-bold uppercase tracking-wider text-cyan-400 hover:text-cyan-300"
+            >
+              Reset
+            </button>
+          )}
+        </div>
         <pre className="max-h-56 overflow-auto whitespace-pre-wrap break-words text-xs leading-6 text-slate-300 sm:text-sm">
-          {prompt.prompt}
+          {processedPrompt}
         </pre>
       </div>
+
       <div className="mt-4 flex flex-wrap gap-2">
         {prompt.tags.map((tag) => (
           <span key={tag} className="rounded-md border border-cyan-300/20 bg-cyan-300/10 px-2 py-1 text-xs text-cyan-100">
@@ -46,6 +89,7 @@ export function PromptCard({
           </span>
         ))}
       </div>
+
       {prompt.relatedConcepts?.length ? (
         <div className="mt-4 flex flex-wrap gap-2 text-sm">
           <span className="text-slate-400">Related:</span>
