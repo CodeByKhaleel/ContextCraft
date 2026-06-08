@@ -13,7 +13,11 @@ export const prompts: PromptTemplate[] = [
       "You are helping me debug a software issue. Analyze the error, identify likely causes, and suggest the smallest safe fix.\n\nGoal: {{goal}}\nStack: {{stack}}\nRelevant code:\n{{code}}\nError logs:\n{{logs}}\nWhat I already tried:\n{{attempts}}\nConstraints: {{constraints}}\n\nReturn: root cause hypothesis, verification steps, fix, and risks.",
     variables: [
       { name: "goal", description: "What should the code do?", example: "Save a user profile" },
-      { name: "logs", description: "Exact error output", example: "TypeError: Cannot read..." },
+      { name: "stack", description: "Tech stack being used", example: "Next.js, Prisma, PostgreSQL" },
+      { name: "code", description: "Relevant code snippets", example: "const user = await db.user.create({...})" },
+      { name: "logs", description: "Exact error output", example: "TypeError: Cannot read properties of null" },
+      { name: "attempts", description: "What you already tried", example: "Checked DB connection, verified API key" },
+      { name: "constraints", description: "Any limits on the fix", example: "Do not change the database schema" },
     ],
     expectedOutput: "A ranked diagnosis, a minimal patch direction, and validation steps.",
     relatedConcepts: ["context-windows", "structured-outputs"],
@@ -28,6 +32,11 @@ export const prompts: PromptTemplate[] = [
     useCase: "Before opening a pull request or merging a risky change.",
     prompt:
       "Review this change as a senior engineer. Prioritize correctness, security, regressions, maintainability, and missing tests.\n\nContext: {{context}}\nDiff or code:\n{{diff}}\nTest coverage:\n{{tests}}\n\nReturn findings first, ordered by severity. Include file-level references when possible. Keep style comments secondary.",
+    variables: [
+      { name: "context", description: "Purpose of the change", example: "Refactoring the auth middleware" },
+      { name: "diff", description: "The code diff or full code", example: "git diff HEAD~1" },
+      { name: "tests", description: "Current test coverage or plan", example: "Unit tests cover 80% of happy paths" },
+    ],
     expectedOutput: "Findings, questions, and test gaps.",
     relatedConcepts: ["constraints", "structured-outputs"],
   },
@@ -41,6 +50,13 @@ export const prompts: PromptTemplate[] = [
     useCase: "When deciding between designs for a feature or service.",
     prompt:
       "Compare these architecture options for my system.\n\nSystem context: {{context}}\nGoal: {{goal}}\nOptions: {{options}}\nConstraints: {{constraints}}\nNon-goals: {{non_goals}}\n\nReturn a decision matrix, failure modes, operational cost, implementation complexity, and a recommendation.",
+    variables: [
+      { name: "context", description: "Existing system state", example: "Legacy PHP monolith with MySQL" },
+      { name: "goal", description: "Desired outcome", example: "Scale to 10k concurrent users" },
+      { name: "options", description: "The paths you are considering", example: "Option A: Go microservices, Option B: Node.js monolith" },
+      { name: "constraints", description: "Budget, time, or stack limits", example: "Must deploy in 2 months" },
+      { name: "non_goals", description: "What you are NOT trying to solve", example: "Global distribution is not needed" },
+    ],
     expectedOutput: "A practical decision memo with a recommendation.",
     relatedConcepts: ["context-packing", "tool-use"],
   },
@@ -54,6 +70,10 @@ export const prompts: PromptTemplate[] = [
     useCase: "When you want a clear path from basics to applied understanding.",
     prompt:
       "Teach me {{topic}}. Start with a plain-language explanation, then show a practical example, common misconceptions, a small exercise, and a self-check quiz. Assume my background is {{background}}.",
+    variables: [
+      { name: "topic", description: "The subject to learn", example: "Quantum Computing" },
+      { name: "background", description: "Your current knowledge level", example: "Web developer with basic math" },
+    ],
     expectedOutput: "Explanation, example, exercise, quiz, and next steps.",
     relatedConcepts: ["llms", "tokens"],
   },
@@ -67,6 +87,11 @@ export const prompts: PromptTemplate[] = [
     useCase: "When evaluating a topic and preparing a concise summary.",
     prompt:
       "Create a research brief from the material below.\n\nQuestion: {{question}}\nAudience: {{audience}}\nNotes and sources:\n{{notes}}\n\nReturn: executive summary, key evidence, uncertainties, risks, recommendations, and follow-up questions.",
+    variables: [
+      { name: "question", description: "The core research question", example: "Should we migrate to AWS or stay on-prem?" },
+      { name: "audience", description: "Who will read this", example: "CTO and Engineering Leads" },
+      { name: "notes", description: "Raw information and links", example: "AWS pricing sheet, server maintenance logs" },
+    ],
     expectedOutput: "A compact brief with uncertainty clearly separated from evidence.",
     relatedConcepts: ["hallucinations", "retrieval"],
   },
@@ -80,6 +105,10 @@ export const prompts: PromptTemplate[] = [
     useCase: "After a meeting with messy notes or transcript fragments.",
     prompt:
       "Analyze these meeting notes and produce an action plan.\n\nMeeting goal: {{goal}}\nNotes:\n{{notes}}\n\nReturn decisions, action items with owners, unresolved questions, risks, and a follow-up message.",
+    variables: [
+      { name: "goal", description: "Why the meeting happened", example: "Plan Q3 roadmap" },
+      { name: "notes", description: "The meeting transcript or notes", example: "John said we need more tests. Sarah agreed." },
+    ],
     expectedOutput: "A clean action plan and follow-up draft.",
     relatedConcepts: ["structured-outputs"],
   },
@@ -93,6 +122,12 @@ export const prompts: PromptTemplate[] = [
     useCase: "When a prompt produces inconsistent or shallow responses.",
     prompt:
       "Improve this prompt for reliability and clarity.\n\nOriginal prompt:\n{{prompt}}\nDesired outcome: {{outcome}}\nAudience: {{audience}}\nConstraints: {{constraints}}\n\nReturn the improved prompt, explain what changed, and list any missing context I should provide.",
+    variables: [
+      { name: "prompt", description: "The current version of your prompt", example: "Write a summary of this." },
+      { name: "outcome", description: "What a perfect response looks like", example: "3 bullet points, technical tone" },
+      { name: "audience", description: "The model's persona or target reader", example: "Senior Project Manager" },
+      { name: "constraints", description: "Limits on the improved prompt", example: "Keep it under 500 characters" },
+    ],
     expectedOutput: "Improved prompt plus explanation and missing context checklist.",
     relatedConcepts: ["role-prompting", "constraints"],
   },
@@ -106,6 +141,12 @@ export const prompts: PromptTemplate[] = [
     useCase: "When using model output in code or no-code automation.",
     prompt:
       "Return only valid JSON matching this schema. Do not include markdown.\n\nTask: {{task}}\nInput:\n{{input}}\nSchema:\n{{schema}}\nValidation rules: {{rules}}\n\nIf required information is missing, set the relevant value to null and explain in the `missing` array.",
+    variables: [
+      { name: "task", description: "What the JSON should contain", example: "Extract entities from text" },
+      { name: "input", description: "The data to process", example: "User feedback: 'The app is slow!'" },
+      { name: "schema", description: "Desired JSON keys and types", example: "{ sentiment: string, score: number }" },
+      { name: "rules", description: "Special constraints", example: "Score must be between 0 and 1" },
+    ],
     expectedOutput: "Valid JSON with predictable keys.",
     relatedConcepts: ["structured-outputs"],
   },
@@ -119,6 +160,11 @@ export const prompts: PromptTemplate[] = [
     useCase: "When the answer should come from documents rather than model memory.",
     prompt:
       "Before answering, design a retrieval plan.\n\nUser question: {{question}}\nAvailable document types: {{documents}}\nKnown constraints: {{constraints}}\n\nReturn search queries, required evidence, likely ambiguity, and the final answer structure after retrieval.",
+    variables: [
+      { name: "question", description: "The user's original query", example: "How do I reset my password?" },
+      { name: "documents", description: "What kind of info is available", example: "Internal FAQ, Support tickets" },
+      { name: "constraints", description: "Search or answer limits", example: "Only use docs from 2024" },
+    ],
     expectedOutput: "Retrieval plan, evidence checklist, and answer structure.",
     relatedConcepts: ["retrieval", "embeddings"],
   },
@@ -132,7 +178,32 @@ export const prompts: PromptTemplate[] = [
     useCase: "When documentation or messaging is too generic.",
     prompt:
       "Rewrite the content for this audience.\n\nAudience: {{audience}}\nGoal: {{goal}}\nTone: {{tone}}\nContent:\n{{content}}\n\nKeep technical meaning intact. Remove fluff. Return a polished version and a short list of changes.",
+    variables: [
+      { name: "audience", description: "Who you are writing for", example: "Non-technical stakeholders" },
+      { name: "goal", description: "The intent of the rewrite", example: "Explain the delay in the release" },
+      { name: "tone", description: "The desired voice", example: "Empathetic but professional" },
+      { name: "content", description: "The original text", example: "The database migration failed due to a dead-lock." },
+    ],
     expectedOutput: "A rewritten version and concise change notes.",
     relatedConcepts: ["role-prompting"],
+  },
+  {
+    id: "context-architect",
+    title: "System Context Architect",
+    description: "Design a comprehensive context strategy for a complex AI task.",
+    category: "coding",
+    difficulty: "advanced",
+    tags: ["context", "architecture", "strategy"],
+    useCase: "When you need to define exactly what information to provide for a large-scale task.",
+    prompt:
+      "Design a context packing strategy for the following task.\n\nTask: {{task}}\nPrimary Data Sources: {{sources}}\nKnown Constraints: {{constraints}}\nModel Context Window: {{window}}\n\nReturn: A ranked list of what to include, what to exclude, how to chunk/format the data, and a validation plan to ensure the model isn't overwhelmed.",
+    variables: [
+      { name: "task", description: "The main goal of the AI agent", example: "Refactor a monolithic service to microservices" },
+      { name: "sources", description: "Available code, docs, and logs", example: "Repo A, Swagger docs, Datadog logs" },
+      { name: "window", description: "Token limit of the target model", example: "128k tokens" },
+      { name: "constraints", description: "Business or technical limits", example: "Must remain within $50 monthly budget" },
+    ],
+    expectedOutput: "A structured context strategy and data pipeline plan.",
+    relatedConcepts: ["context-packing", "context-windows"],
   },
 ];
