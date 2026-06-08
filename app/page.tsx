@@ -98,7 +98,7 @@ export default function HomePage() {
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400">
               ContextCraft helps developers turn vague AI requests into clear prompts, packed
-              context, and repeatable workflows they can copy and verify.
+              context, and repeatable workflows. Now featuring interactive prompt templates.
             </p>
             <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center">
               <Link
