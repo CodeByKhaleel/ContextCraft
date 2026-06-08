@@ -11,3 +11,12 @@ export function titleCase(value: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
+
+export function replaceVariables(template: string, variables: Record<string, string>) {
+  return template.replace(/\{\{(.*?)\}\}/g, (_, key) => {
+    const trimmedKey = key.trim();
+    return trimmedKey in variables && variables[trimmedKey]
+      ? variables[trimmedKey]
+      : `{{${trimmedKey}}}`;
+  });
+}
