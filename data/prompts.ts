@@ -206,4 +206,41 @@ export const prompts: PromptTemplate[] = [
     expectedOutput: "A structured context strategy and data pipeline plan.",
     relatedConcepts: ["context-packing", "context-windows"],
   },
+  {
+    id: "reasoning-step-by-step",
+    title: "Reasoning Step by Step",
+    description: "Force the model to show its work before committing to an answer.",
+    category: "coding",
+    difficulty: "intermediate",
+    tags: ["reasoning", "chain-of-thought", "accuracy"],
+    useCase: "When a task involves logic, math, planning, or multi-step decisions where a direct answer is risky.",
+    prompt:
+      "Think through this step by step. Do not give a final answer until you have shown your reasoning.\n\nTask: {{task}}\nContext: {{context}}\nConstraints: {{constraints}}\n\nFirst, list the key facts and assumptions. Then reason through the problem in numbered steps. Finally, state your answer and explain any remaining uncertainty.",
+    variables: [
+      { name: "task", description: "The problem to solve", example: "Determine the optimal database indexing strategy" },
+      { name: "context", description: "Relevant background information", example: "We have 10M rows, mostly reads, 5 write-heavy tables" },
+      { name: "constraints", description: "Limits on the solution", example: "No additional infrastructure budget" },
+    ],
+    expectedOutput: "Numbered reasoning steps followed by a clear answer and confidence level.",
+    relatedConcepts: ["chain-of-thought", "structured-outputs"],
+  },
+  {
+    id: "agent-orchestrator",
+    title: "Agent Orchestrator Planner",
+    description: "Design a multi-agent workflow with clear roles, handoffs, and review stages.",
+    category: "coding",
+    difficulty: "advanced",
+    tags: ["agents", "orchestration", "multi-agent"],
+    useCase: "When a task is too complex for a single agent and needs parallel specialized workers.",
+    prompt:
+      "Design a multi-agent plan for the following task.\n\nTask: {{task}}\nAvailable agent types: {{agents}}\nShared context: {{context}}\nOutput requirements: {{output}}\n\nReturn: agent roles, per-agent context slices, handoff points, a review stage, and failure recovery steps.",
+    variables: [
+      { name: "task", description: "The overall goal", example: "Build and deploy a REST API with tests" },
+      { name: "agents", description: "Types of agents available", example: "Coder, Reviewer, Tester, Deployer" },
+      { name: "context", description: "Shared knowledge all agents can access", example: "Repo structure, API spec, CI config" },
+      { name: "output", description: "What the final deliverable looks like", example: "Merged PR with passing CI and deployment log" },
+    ],
+    expectedOutput: "An agent orchestration plan with roles, handoffs, and review gates.",
+    relatedConcepts: ["multi-agent-systems", "context-packing"],
+  },
 ];
