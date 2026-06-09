@@ -62,4 +62,17 @@ export const workflows: Workflow[] = [
       { title: "Pick first milestone", goal: "Choose the smallest useful deliverable." },
     ],
   },
+  {
+    id: "ai-refactoring",
+    title: "AI-Assisted Refactoring Workflow",
+    description: "Safely refactor a codebase with AI by scoping, planning, incremental changes, and verification.",
+    audience: "developer",
+    steps: [
+      { title: "Define the refactoring goal", goal: "State what improves and what must not break.", prompt: "Use the Compare Architecture Options prompt." },
+      { title: "Scope the blast radius", goal: "Identify affected files, tests, and downstream consumers." },
+      { title: "Plan incremental steps", goal: "Break the refactor into reviewable, reversible chunks.", prompt: "Use the Reasoning Step by Step prompt." },
+      { title: "Apply one chunk at a time", goal: "Let AI implement a single chunk, then verify tests pass." },
+      { title: "Review and document", goal: "Ask for a summary of what changed and why.", prompt: "Use the Senior Code Review prompt." },
+    ],
+  },
 ];
