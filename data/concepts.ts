@@ -145,4 +145,16 @@ export const concepts: ConceptPage[] = [
     relatedPrompts: ["context-architect", "code-review-pass"],
     relatedWorkflows: ["code-review-system"],
   },
+  {
+    slug: "rag",
+    title: "Retrieval-Augmented Generation (RAG)",
+    summary: "RAG combines retrieval of external documents with language model generation to produce grounded, up-to-date answers.",
+    difficulty: "intermediate",
+    section: "context-engineering",
+    whyItMatters: "RAG lets LLMs answer questions about private or recent data they were never trained on, reducing hallucinations and improving factual accuracy.",
+    example: "A customer support bot retrieves the latest policy docs before answering a refund question, citing the exact section it used.",
+    commonMistakes: ["Retrieving irrelevant chunks that pollute the context.", "Not re-ranking results before stuffing them into the prompt.", "Forgetting to tell the model to say 'I don't know' when no relevant doc is found."],
+    relatedPrompts: ["rag-query-plan", "research-brief"],
+    relatedWorkflows: ["research-briefing"],
+  },
 ];
