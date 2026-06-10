@@ -101,4 +101,14 @@ export const aiTools: AiTool[] = [
     caution: "Evaluate data residency and model provider costs before committing production workloads.",
     href: "https://dify.ai",
   },
+  {
+    id: "windsurf",
+    name: "Windsurf",
+    category: "ide-agent",
+    summary: "AI-native IDE with Cascade agent for deep codebase understanding, multi-file edits, and terminal integration.",
+    bestFor: ["Deep codebase context", "Multi-file refactors", "IDE-integrated agent workflows"],
+    contextStyle: "Builds a live model of your codebase so the agent can reason about dependencies, call graphs, and project conventions.",
+    caution: "Review multi-file changes carefully; the agent's broad context can lead to unexpected modifications in unrelated files.",
+    href: "https://codeium.com/windsurf",
+  },
 ];
