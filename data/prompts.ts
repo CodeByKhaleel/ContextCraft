@@ -243,4 +243,22 @@ export const prompts: PromptTemplate[] = [
     expectedOutput: "An agent orchestration plan with roles, handoffs, and review gates.",
     relatedConcepts: ["multi-agent-systems", "context-packing"],
   },
+  {
+    id: "ai-pair-programmer",
+    title: "AI Pair Programmer",
+    description: "Collaborate with an AI as a coding partner that asks clarifying questions before writing code.",
+    category: "coding",
+    difficulty: "beginner",
+    tags: ["pair-programming", "collaboration", "code"],
+    useCase: "When you want the AI to act as a thoughtful coding partner rather than a code vending machine.",
+    prompt:
+      "Act as my pair programmer. Before writing any code, ask me up to 3 clarifying questions about requirements, constraints, and edge cases. Then propose a small first step and wait for my approval before continuing.\n\nTask: {{task}}\nCurrent code:\n{{code}}\nEnvironment: {{environment}}\n\nAfter my answers, return: proposed approach, the code change, tests to verify, and any risks you see.",
+    variables: [
+      { name: "task", description: "What you want to build or fix", example: "Add pagination to the user list endpoint" },
+      { name: "code", description: "Relevant existing code", example: "app.get('/users', async (req, res) => { ... })" },
+      { name: "environment", description: "Runtime and dependencies", example: "Node 20, Express, PostgreSQL" },
+    ],
+    expectedOutput: "Clarifying questions first, then a small incremental change with tests.",
+    relatedConcepts: ["constraints", "structured-outputs"],
+  },
 ];
