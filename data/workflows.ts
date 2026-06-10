@@ -75,4 +75,17 @@ export const workflows: Workflow[] = [
       { title: "Review and document", goal: "Ask for a summary of what changed and why.", prompt: "Use the Senior Code Review prompt." },
     ],
   },
+  {
+    id: "ai-pair-programming",
+    title: "AI Pair Programming Workflow",
+    description: "Collaborate with an AI coding partner through clarifying questions, small increments, and continuous verification.",
+    audience: "developer",
+    steps: [
+      { title: "Describe the task", goal: "State what you want to build or fix in plain language." },
+      { title: "Answer clarifying questions", goal: "Let the AI ask up to 3 questions before it writes code.", prompt: "Use the AI Pair Programmer prompt." },
+      { title: "Review the proposed approach", goal: "Confirm or correct the plan before any code is written." },
+      { title: "Apply the first small change", goal: "Accept only the smallest useful increment." },
+      { title: "Run tests and verify", goal: "Confirm the change works before asking for the next step." },
+    ],
+  },
 ];
