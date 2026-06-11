@@ -125,4 +125,4 @@ The current version focuses on a strong AI cheatsheet experience:
 - Copy-ready prompts
 - Responsive dark UI
 
-Accounts, saved prompts, AI API calls, and community submissions are intentionally left for later versions.
+Accounts, saved prompts, AI API calls, and community submissions are intentionally left for later versions and more.
