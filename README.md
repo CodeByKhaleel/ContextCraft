@@ -25,6 +25,7 @@ ContextCraft is not a generic AI notes site. It is a hands-on reference for usin
 | Context Engineering | Guidance for giving models the right evidence in the right shape. |
 | Prompt Library | Searchable, copy-ready templates organized by category and difficulty. |
 | AI Workflows | Step-by-step systems for debugging, review, research, learning, and planning. |
+| Latest AI News | A cached live feed of official AI updates and industry reporting. |
 | Global Search | Quick access to prompts, concepts, and workflows from anywhere in the app. |
 
 ## Built-In Prompt Patterns
@@ -124,5 +125,6 @@ The current version focuses on a strong AI cheatsheet experience:
 - Workflow guidance
 - Copy-ready prompts
 - Responsive dark UI
+- Live AI news from multiple RSS and Atom sources
 
 Accounts, saved prompts, AI API calls, and community submissions are intentionally left for later versions and more.
