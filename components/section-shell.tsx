@@ -9,6 +9,7 @@ const sidebar = [
   { href: "/prompts", label: "Prompt Library" },
   { href: "/workflows", label: "AI Workflows" },
   { href: "/tools", label: "AI Tools & Agents" },
+  { href: "/news", label: "Latest AI News" },
   { href: "/limitations", label: "Limitations" },
 ];
 
