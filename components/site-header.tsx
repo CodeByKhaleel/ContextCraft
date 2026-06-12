@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AlertTriangle, BookOpen, Bot, Braces, Boxes, GitBranch, Menu, Search, Workflow, X } from "lucide-react";
+import { AlertTriangle, BookOpen, Bot, Braces, Boxes, GitBranch, Menu, Newspaper, Search, Workflow, X } from "lucide-react";
 import { useState } from "react";
 import { concepts } from "@/data/concepts";
 
@@ -13,6 +13,7 @@ const navItems = [
   { href: "/prompts", label: "Prompts", icon: Bot },
   { href: "/workflows", label: "Workflows", icon: Workflow },
   { href: "/tools", label: "Tools", icon: Boxes },
+  { href: "/news", label: "News", icon: Newspaper },
   { href: "/limitations", label: "Limits", icon: AlertTriangle },
 ];
 
@@ -32,7 +33,7 @@ export function SiteHeader() {
               Context<span className="text-cyan-300">Craft</span>
             </span>
           </Link>
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-1 xl:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -58,7 +59,7 @@ export function SiteHeader() {
             </Link>
             <button
               type="button"
-              className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-slate-300 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-cyan-100 lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-slate-300 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-cyan-100 xl:hidden"
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
               onClick={() => setMobileOpen((value) => !value)}
@@ -68,7 +69,7 @@ export function SiteHeader() {
           </div>
         </div>
         {mobileOpen ? (
-          <nav className="grid grid-cols-2 gap-2 border-t border-white/10 p-2 sm:grid-cols-3 lg:hidden">
+          <nav className="grid grid-cols-2 gap-2 border-t border-white/10 p-2 sm:grid-cols-3 xl:hidden">
             {navItems.map((item) => (
               <Link
                 key={item.href}
