@@ -56,6 +56,30 @@ a {
   text-underline-offset: 4px;
 }
 
+@keyframes ai-news-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ai-news-marquee {
+  animation: ai-news-scroll 42s linear infinite;
+}
+
+.ai-news-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-news-marquee {
+    animation: none;
+  }
+}
+
 @layer components {
   .glass-panel {
     @apply rounded-xl border border-white/10 bg-white/[0.045] shadow-[0_22px_80px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl;
