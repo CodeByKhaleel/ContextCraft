@@ -1,8 +1,10 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  ArrowUpRight,
   Bot,
   Braces,
+  Clock3,
   Code2,
   Diff,
   FileInput,
@@ -13,6 +15,7 @@ import {
   Layers3,
   Library,
   MoreHorizontal,
+  Newspaper,
   Play,
   Settings2,
   TerminalSquare,
@@ -21,6 +24,10 @@ import {
 import { concepts } from "@/data/concepts";
 import { prompts } from "@/data/prompts";
 import { workflows } from "@/data/workflows";
+import { getLatestAiNews } from "@/lib/ai-news";
+import type { NewsArticle } from "@/types/news";
+
+export const revalidate = 1800;
 
 const cheatsheetTools = [
   { title: "Token Basics", description: "Understand cost, speed, and context limits", icon: Gauge, href: "/concepts/tokens" },
@@ -83,7 +90,10 @@ const featureCards = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { articles, updatedAt } = await getLatestAiNews();
+  const topNews = articles.slice(0, 8);
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#02030d] text-white">
       <section className="relative px-2 pb-8 pt-4 sm:px-5 sm:pb-10 lg:px-8">
@@ -122,6 +132,8 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+
+          <AiNewsScroller articles={topNews} updatedAt={updatedAt} />
 
           <div className="grid overflow-hidden rounded-lg border border-white/12 bg-white/[0.035] shadow-[0_28px_120px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl lg:min-h-[520px] lg:grid-cols-[290px_minmax(420px,1fr)_minmax(380px,0.95fr)]">
             <aside className="border-b border-white/10 bg-slate-950/20 p-4 lg:border-b-0 lg:border-r">
@@ -307,6 +319,87 @@ export default function HomePage() {
       </section>
     </main>
   );
+}
+
+function AiNewsScroller({
+  articles,
+  updatedAt,
+}: {
+  articles: NewsArticle[];
+  updatedAt: string;
+}) {
+  if (articles.length === 0) {
+    return (
+      <div className="mb-5 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-slate-400 backdrop-blur-xl">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <span className="inline-flex items-center gap-2 font-medium text-slate-200">
+            <Newspaper className="h-4 w-4 text-cyan-200" />
+            AI News
+          </span>
+          <Link href="/news" className="text-cyan-200 transition hover:text-cyan-100">
+            Open news
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const scrollingArticles = [...articles, ...articles];
+
+  return (
+    <section
+      aria-label="Latest AI news"
+      className="mb-5 overflow-hidden rounded-lg border border-cyan-300/20 bg-cyan-300/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl"
+    >
+      <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center">
+        <Link
+          href="/news"
+          className="flex shrink-0 items-center justify-between gap-4 rounded-md border border-white/10 bg-slate-950/45 px-3 py-2 text-sm font-semibold text-white transition hover:border-cyan-300/45"
+        >
+          <span className="inline-flex items-center gap-2">
+            <Newspaper className="h-4 w-4 text-cyan-200" />
+            AI News
+          </span>
+          <ArrowUpRight className="h-4 w-4 text-cyan-200" />
+        </Link>
+
+        <div className="relative min-w-0 flex-1 overflow-hidden py-1 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
+          <div className="ai-news-marquee flex w-max items-center gap-3">
+            {scrollingArticles.map((article, index) => (
+              <Link
+                key={`${article.id}-${index}`}
+                href={article.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex h-10 max-w-[86vw] items-center gap-2 rounded-md border border-white/10 bg-white/[0.055] px-3 text-sm text-slate-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/10 sm:max-w-[360px]"
+              >
+                <span className="rounded border border-cyan-300/20 bg-cyan-300/10 px-1.5 py-0.5 text-[11px] font-medium text-cyan-100">
+                  {article.source.name}
+                </span>
+                <span className="truncate">{article.title}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex shrink-0 items-center gap-1.5 text-xs text-slate-400">
+          <Clock3 className="h-3.5 w-3.5 text-cyan-200" />
+          <span>Updated {formatNewsTimestamp(updatedAt)}</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function formatNewsTimestamp(value: string): string {
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "UTC",
+    timeZoneName: "short",
+  }).format(new Date(value));
 }
 
 function PipelineNode({
