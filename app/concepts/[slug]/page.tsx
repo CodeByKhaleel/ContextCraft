@@ -42,26 +42,26 @@ export default async function ConceptPage({ params }: PageProps) {
   return (
     <SectionShell>
       <div className="mb-8 max-w-3xl">
-        <Link href={`/${concept.section}`} className="text-sm font-medium text-cyan-200/80 hover:underline">
+        <Link href={`/${concept.section}`} className="text-sm font-medium text-primary hover:underline">
           {titleCase(concept.section)}
         </Link>
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{concept.title}</h1>
-        <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">{concept.summary}</p>
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">{concept.title}</h1>
+        <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">{concept.summary}</p>
       </div>
 
       <div className="grid gap-5 lg:grid-cols-[1fr_300px]">
         <article className="space-y-5">
           <section className="glass-card p-4 sm:p-5">
-            <h2 className="text-xl font-semibold text-white">Why it matters</h2>
-            <p className="mt-3 leading-7 text-slate-400">{concept.whyItMatters}</p>
+            <h2 className="text-xl font-semibold text-foreground">Why it matters</h2>
+            <p className="mt-3 leading-7 text-muted-foreground">{concept.whyItMatters}</p>
           </section>
           <section className="glass-card p-4 sm:p-5">
-            <h2 className="text-xl font-semibold text-white">Practical example</h2>
-            <p className="mt-3 leading-7 text-slate-400">{concept.example}</p>
+            <h2 className="text-xl font-semibold text-foreground">Practical example</h2>
+            <p className="mt-3 leading-7 text-muted-foreground">{concept.example}</p>
           </section>
           <section className="glass-card p-4 sm:p-5">
-            <h2 className="text-xl font-semibold text-white">Common mistakes</h2>
-            <ul className="mt-3 space-y-2 text-slate-400">
+            <h2 className="text-xl font-semibold text-foreground">Common mistakes</h2>
+            <ul className="mt-3 space-y-2 text-muted-foreground">
               {concept.commonMistakes.map((mistake) => (
                 <li key={mistake} className="flex gap-2">
                   <span aria-hidden="true">-</span>
@@ -73,29 +73,29 @@ export default async function ConceptPage({ params }: PageProps) {
         </article>
         <aside className="space-y-5">
           <div className="glass-card p-4 sm:p-5">
-            <h2 className="font-semibold text-white">Related workflows</h2>
+            <h2 className="font-semibold text-foreground">Related workflows</h2>
             <div className="mt-3 space-y-2">
               {relatedWorkflows.length ? (
                 relatedWorkflows.map((workflow) => (
-                  <Link key={workflow.id} href={`/workflows#${workflow.id}`} className="block text-sm text-cyan-200 hover:underline">
+                  <Link key={workflow.id} href={`/workflows#${workflow.id}`} className="block text-sm font-medium text-primary hover:underline">
                     {workflow.title}
                   </Link>
                 ))
               ) : (
-                <p className="text-sm leading-6 text-slate-400">No workflow is linked yet.</p>
+                <p className="text-sm leading-6 text-muted-foreground">No workflow is linked yet.</p>
               )}
             </div>
           </div>
           <div className="glass-card p-4 sm:p-5">
-            <h2 className="font-semibold text-white">Next practical step</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-400">
+            <h2 className="font-semibold text-foreground">Next practical step</h2>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
               Apply this concept with a copy-ready prompt or a repeatable workflow.
             </p>
             <div className="mt-4 grid gap-2">
               {nextPrompt ? (
                 <Link
                   href={`/prompts?prompt=${nextPrompt.id}`}
-                  className="rounded-md border border-cyan-300/20 bg-cyan-300/10 px-3 py-2 text-sm font-medium text-cyan-100 transition hover:border-cyan-300/45"
+                  className="rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition hover:bg-blue-700"
                 >
                   Use {nextPrompt.title}
                 </Link>
@@ -103,7 +103,7 @@ export default async function ConceptPage({ params }: PageProps) {
               {nextWorkflow ? (
                 <Link
                   href={`/workflows#${nextWorkflow.id}`}
-                  className="rounded-md border border-white/10 bg-white/[0.045] px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-300/45 hover:text-cyan-100"
+                  className="rounded-md border border-border bg-card px-3 py-2 text-sm font-medium text-foreground transition hover:border-blue-300 hover:bg-accent hover:text-accent-foreground"
                 >
                   Open {nextWorkflow.title}
                 </Link>
@@ -115,7 +115,7 @@ export default async function ConceptPage({ params }: PageProps) {
 
       {relatedPrompts.length ? (
         <div className="mt-8">
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight text-white">Related prompts</h2>
+          <h2 className="mb-4 text-2xl font-semibold tracking-tight text-foreground">Related prompts</h2>
           <div className="grid gap-5 xl:grid-cols-2">
             {relatedPrompts.map((prompt) => (
               <PromptCard key={prompt.id} prompt={prompt} />
