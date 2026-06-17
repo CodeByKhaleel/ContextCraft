@@ -62,10 +62,10 @@ export default function ToolsPage() {
 
       <div className="glass-panel mb-8 grid gap-3 p-4 sm:grid-cols-2 xl:grid-cols-4">
         {playbooks.map((item) => (
-          <div key={item.title} className="rounded-lg border border-white/10 bg-white/[0.045] p-4">
-            <item.icon className="h-5 w-5 text-cyan-200" />
-            <h2 className="mt-3 font-semibold text-white">{item.title}</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
+          <div key={item.title} className="rounded-lg border border-border bg-muted/50 p-4">
+            <item.icon className="h-5 w-5 text-primary" />
+            <h2 className="mt-3 font-semibold text-foreground">{item.title}</h2>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
           </div>
         ))}
       </div>
@@ -77,18 +77,18 @@ export default function ToolsPage() {
           return (
             <article key={tool.id} className="glass-card p-4 sm:p-5">
               <div className="flex items-start gap-3">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 text-cyan-100">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-blue-200 bg-blue-50 text-blue-700">
                   <Icon className="h-5 w-5" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
                       <span className="glass-chip">{titleCase(tool.category)}</span>
-                      <h2 className="mt-3 text-xl font-semibold tracking-tight text-white">{tool.name}</h2>
+                      <h2 className="mt-3 text-xl font-semibold tracking-tight text-foreground">{tool.name}</h2>
                     </div>
                     <Link
                       href={tool.href}
-                      className="inline-flex h-9 items-center gap-2 rounded-md border border-white/10 bg-white/[0.045] px-3 text-sm font-medium text-slate-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/10 hover:text-cyan-100"
+                      className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-sm font-medium text-foreground transition hover:border-blue-300 hover:bg-accent hover:text-accent-foreground"
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -96,28 +96,28 @@ export default function ToolsPage() {
                       <ArrowUpRight className="h-4 w-4" />
                     </Link>
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">{tool.summary}</p>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{tool.summary}</p>
                 </div>
               </div>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-lg border border-white/10 bg-white/[0.035] p-3">
-                  <h3 className="text-sm font-semibold text-slate-100">Best for</h3>
+                <div className="rounded-lg border border-border bg-muted/50 p-3">
+                  <h3 className="text-sm font-semibold text-foreground">Best for</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {tool.bestFor.map((item) => (
-                      <span key={item} className="rounded-md border border-cyan-300/20 bg-cyan-300/10 px-2 py-1 text-xs text-cyan-100">
+                      <span key={item} className="rounded-md border border-blue-200 bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700">
                         {item}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className="rounded-lg border border-white/10 bg-white/[0.035] p-3">
-                  <h3 className="text-sm font-semibold text-slate-100">Context style</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">{tool.contextStyle}</p>
+                <div className="rounded-lg border border-border bg-muted/50 p-3">
+                  <h3 className="text-sm font-semibold text-foreground">Context style</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{tool.contextStyle}</p>
                 </div>
-                <div className="rounded-lg border border-white/10 bg-white/[0.035] p-3">
-                  <h3 className="text-sm font-semibold text-slate-100">Watch out</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">{tool.caution}</p>
+                <div className="rounded-lg border border-border bg-muted/50 p-3">
+                  <h3 className="text-sm font-semibold text-foreground">Watch out</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{tool.caution}</p>
                 </div>
               </div>
             </article>
