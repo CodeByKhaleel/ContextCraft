@@ -40,19 +40,19 @@ export function WorkflowExplorer({
     <div className="space-y-6">
       <div className="glass-panel p-4">
         <label className="relative block">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search workflows by task, step, or prompt..."
-            className="h-11 w-full rounded-md border border-white/10 bg-slate-950/45 pl-10 pr-3 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/45 focus:ring-2 focus:ring-cyan-300/25"
+            className="h-11 w-full rounded-md border border-border bg-card pl-10 pr-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-blue-300 focus:ring-2 focus:ring-primary/20"
           />
         </label>
         <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
           <select
             value={audience}
             onChange={(event) => setAudience(event.target.value as typeof audience)}
-            className="h-10 w-full rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100 sm:w-auto"
+            className="h-10 w-full rounded-md border border-border bg-card px-3 text-sm text-foreground sm:w-auto"
             aria-label="Workflow audience"
           >
             {audiences.map((item) => (
@@ -61,7 +61,7 @@ export function WorkflowExplorer({
               </option>
             ))}
           </select>
-          <span className="self-center text-sm text-slate-400">
+          <span className="self-center text-sm text-muted-foreground">
             {filtered.length} workflow{filtered.length === 1 ? "" : "s"}
           </span>
         </div>
@@ -73,8 +73,8 @@ export function WorkflowExplorer({
             <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
               <div>
                 <span className="glass-chip">{titleCase(workflow.audience)}</span>
-                <h2 className="mt-3 text-xl font-semibold tracking-tight text-white">{workflow.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{workflow.description}</p>
+                <h2 className="mt-3 text-xl font-semibold tracking-tight text-foreground">{workflow.title}</h2>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{workflow.description}</p>
               </div>
             </div>
             <ol className="grid gap-3">
@@ -82,16 +82,16 @@ export function WorkflowExplorer({
                 const linkedPrompt = findPromptForStep(step.prompt, prompts);
 
                 return (
-                  <li key={step.title} className="rounded-lg border border-white/10 bg-white/[0.035] p-3 sm:p-4">
+                  <li key={step.title} className="rounded-lg border border-border bg-muted/50 p-3 sm:p-4">
                     <div className="flex gap-3">
-                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md border border-cyan-300/20 bg-cyan-300/10 text-sm font-semibold text-cyan-100">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md border border-blue-200 bg-blue-50 text-sm font-semibold text-blue-700">
                         {index + 1}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="font-medium text-slate-100">{step.title}</h3>
-                        <p className="mt-1 text-sm leading-6 text-slate-400">{step.goal}</p>
+                        <h3 className="font-medium text-foreground">{step.title}</h3>
+                        <p className="mt-1 text-sm leading-6 text-muted-foreground">{step.goal}</p>
                         {step.prompt ? (
-                          <p className="mt-2 text-sm font-medium text-cyan-100">
+                          <p className="mt-2 text-sm font-medium text-primary">
                             {linkedPrompt ? (
                               <Link href={`/prompts?prompt=${linkedPrompt.id}`} className="hover:underline">
                                 {step.prompt}
@@ -112,7 +112,7 @@ export function WorkflowExplorer({
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-lg border border-dashed border-white/15 bg-white/[0.035] p-8 text-center text-slate-400 backdrop-blur-xl">
+        <div className="rounded-lg border border-dashed border-border bg-card p-8 text-center text-muted-foreground">
           No workflows match those filters.
         </div>
       ) : null}
