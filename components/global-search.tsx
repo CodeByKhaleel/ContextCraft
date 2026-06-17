@@ -84,7 +84,7 @@ export function GlobalSearch({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-background/80 p-2 backdrop-blur sm:p-4">
+    <div className="fixed inset-0 z-50 bg-foreground/20 p-2 sm:p-4">
       <div className="mx-auto mt-3 max-w-2xl rounded-lg border border-border bg-card shadow-soft sm:mt-20">
         <div className="flex items-center gap-2 border-b border-border p-3 sm:gap-3 sm:p-4">
           <Search className="h-5 w-5 shrink-0 text-muted-foreground" />
