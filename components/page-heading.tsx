@@ -14,14 +14,14 @@ export function PageHeading({
   return (
     <div className="mb-8 max-w-3xl">
       {eyebrow ? (
-        <p className="mb-3 text-sm font-medium uppercase tracking-wide text-cyan-200/80">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wide text-primary">
           {eyebrow}
         </p>
       ) : null}
-      <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+      <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
         {title}
       </h1>
-      <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg">{description}</p>
+      <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">{description}</p>
       {children}
     </div>
   );
