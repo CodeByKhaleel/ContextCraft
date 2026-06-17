@@ -60,19 +60,19 @@ export function PromptLibrary({
     <div className="space-y-6">
       <div className="glass-panel p-4">
         <label className="relative block">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search prompts by use case, tag, or instruction..."
-            className="h-11 w-full rounded-md border border-white/10 bg-slate-950/45 pl-10 pr-3 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-300/45 focus:ring-2 focus:ring-cyan-300/25"
+            className="h-11 w-full rounded-md border border-border bg-card pl-10 pr-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-blue-300 focus:ring-2 focus:ring-primary/20"
           />
         </label>
         <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap">
           <select
             value={category}
             onChange={(event) => setCategory(event.target.value as typeof category)}
-            className="h-10 w-full rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100 sm:w-auto"
+            className="h-10 w-full rounded-md border border-border bg-card px-3 text-sm text-foreground sm:w-auto"
             aria-label="Prompt category"
           >
             {categories.map((item) => (
@@ -84,7 +84,7 @@ export function PromptLibrary({
           <select
             value={difficulty}
             onChange={(event) => setDifficulty(event.target.value as typeof difficulty)}
-            className="h-10 w-full rounded-md border border-white/10 bg-slate-950/80 px-3 text-sm text-slate-100 sm:w-auto"
+            className="h-10 w-full rounded-md border border-border bg-card px-3 text-sm text-foreground sm:w-auto"
             aria-label="Prompt difficulty"
           >
             {difficulties.map((item) => (
@@ -93,7 +93,7 @@ export function PromptLibrary({
               </option>
             ))}
           </select>
-          <span className="self-center text-sm text-slate-400">
+          <span className="self-center text-sm text-muted-foreground">
             {filtered.length} result{filtered.length === 1 ? "" : "s"}
           </span>
         </div>
@@ -106,7 +106,7 @@ export function PromptLibrary({
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-lg border border-dashed border-white/15 bg-white/[0.035] p-8 text-center text-slate-400 backdrop-blur-xl">
+        <div className="rounded-lg border border-dashed border-border bg-card p-8 text-center text-muted-foreground">
           No prompts match those filters.
         </div>
       ) : null}
