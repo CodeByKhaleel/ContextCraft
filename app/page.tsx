@@ -41,15 +41,15 @@ const templates = [
 ];
 
 const tokenChips = [
-  ["Analyze", "bg-sky-400/25 text-sky-100 border-sky-300/30"],
-  ["the", "bg-violet-400/25 text-violet-100 border-violet-300/30"],
-  ["error", "bg-amber-400/25 text-amber-100 border-amber-300/30"],
-  ["identify", "bg-cyan-400/25 text-cyan-100 border-cyan-300/30"],
-  ["is", "bg-fuchsia-400/25 text-fuchsia-100 border-fuchsia-300/30"],
-  ["unrelated", "bg-emerald-400/25 text-emerald-100 border-emerald-300/30"],
-  ["tokens", "bg-rose-400/25 text-rose-100 border-rose-300/30"],
-  ["Contract", "bg-violet-400/25 text-violet-100 border-violet-300/30"],
-  ["writer", "bg-slate-400/20 text-slate-200 border-slate-300/20"],
+  ["Analyze", "bg-sky-50 text-sky-700 border-sky-200"],
+  ["the", "bg-violet-50 text-violet-700 border-violet-200"],
+  ["error", "bg-amber-50 text-amber-700 border-amber-200"],
+  ["identify", "bg-blue-50 text-blue-700 border-blue-200"],
+  ["is", "bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200"],
+  ["unrelated", "bg-emerald-50 text-emerald-700 border-emerald-200"],
+  ["tokens", "bg-rose-50 text-rose-700 border-rose-200"],
+  ["Contract", "bg-violet-50 text-violet-700 border-violet-200"],
+  ["writer", "bg-slate-50 text-slate-700 border-slate-200"],
 ];
 
 const featureCards = [
@@ -95,38 +95,34 @@ export default async function HomePage() {
   const topNews = articles.slice(0, 8);
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#02030d] text-white">
-      <section className="relative px-2 pb-8 pt-4 sm:px-5 sm:pb-10 lg:px-8">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(56,189,248,0.22),transparent_34rem),radial-gradient(circle_at_80%_10%,rgba(124,58,237,0.2),transparent_30rem),linear-gradient(180deg,#030414_0%,#050617_52%,#02030d_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(56,189,248,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.05)_1px,transparent_1px)] bg-[size:56px_56px] opacity-50" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-56 border-t border-cyan-300/60 shadow-[inset_0_1px_0_rgba(125,211,252,0.8),0_0_80px_rgba(14,165,233,0.32)]" />
-
-        <div className="relative mx-auto max-w-[1440px]">
+    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      <section className="px-2 pb-8 pt-4 sm:px-5 sm:pb-10 lg:px-8">
+        <div className="mx-auto max-w-[1440px]">
           <div className="mx-auto max-w-5xl px-2 pb-6 pt-8 text-center sm:px-4 sm:pb-8 sm:pt-16">
-            <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Practical AI Prompts, Context, and Workflows
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
               ContextCraft helps developers turn vague AI requests into clear prompts, packed
               context, and repeatable workflows. Now featuring interactive prompt templates.
             </p>
             <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center">
               <Link
                 href="/prompts"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-cyan-300 px-4 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-blue-700"
               >
                 Browse Prompts
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/workflows"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.055] px-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/45 hover:bg-cyan-300/10"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-border bg-card px-4 text-sm font-semibold text-foreground transition hover:border-blue-300 hover:bg-accent hover:text-accent-foreground"
               >
                 Open Workflows
               </Link>
               <Link
                 href="/basics"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.035] px-4 text-sm font-semibold text-slate-300 transition hover:border-cyan-300/45 hover:text-cyan-100"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-border bg-card px-4 text-sm font-semibold text-muted-foreground transition hover:border-blue-300 hover:bg-accent hover:text-accent-foreground"
               >
                 Learn Basics
               </Link>
@@ -135,41 +131,41 @@ export default async function HomePage() {
 
           <AiNewsScroller articles={topNews} updatedAt={updatedAt} />
 
-          <div className="grid overflow-hidden rounded-lg border border-white/12 bg-white/[0.035] shadow-[0_28px_120px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl lg:min-h-[520px] lg:grid-cols-[290px_minmax(420px,1fr)_minmax(380px,0.95fr)]">
-            <aside className="border-b border-white/10 bg-slate-950/20 p-4 lg:border-b-0 lg:border-r">
+          <div className="grid overflow-hidden rounded-lg border border-border bg-card shadow-soft lg:min-h-[520px] lg:grid-cols-[290px_minmax(420px,1fr)_minmax(380px,0.95fr)]">
+            <aside className="border-b border-border bg-muted/40 p-4 lg:border-b-0 lg:border-r">
               <h2 className="text-base font-semibold">Cheatsheet</h2>
-              <p className="mt-3 text-sm text-slate-400">Developer Tools</p>
+              <p className="mt-3 text-sm text-muted-foreground">Developer Tools</p>
               <div className="mt-3 space-y-3">
                 {cheatsheetTools.map((item) => (
                   <Link
                     key={item.title}
                     href={item.href}
-                    className="flex w-full items-center gap-3 rounded-lg border border-white/10 bg-white/[0.055] p-3 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-cyan-300/40 hover:bg-cyan-300/10"
+                    className="flex w-full items-center gap-3 rounded-lg border border-border bg-card p-3 text-left transition hover:border-blue-300 hover:bg-accent"
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-md bg-white/[0.065] text-cyan-200">
+                    <span className="grid h-10 w-10 place-items-center rounded-md bg-blue-50 text-blue-700">
                       <item.icon className="h-4 w-4" />
                     </span>
                     <span>
-                      <span className="block text-sm font-semibold text-slate-100">{item.title}</span>
+                      <span className="block text-sm font-semibold text-foreground">{item.title}</span>
                       <span className="block text-xs text-slate-500">{item.description}</span>
                     </span>
                   </Link>
                 ))}
               </div>
 
-              <p className="mt-8 text-sm text-slate-400">Templates</p>
+              <p className="mt-8 text-sm text-muted-foreground">Templates</p>
               <div className="mt-3 space-y-3">
                 {templates.map((item) => (
                   <Link
                     key={item.title}
                     href={item.href}
-                    className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.055] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] transition hover:border-violet-300/40 hover:bg-violet-300/10"
+                    className="flex items-center gap-3 rounded-lg border border-border bg-card p-3 transition hover:border-violet-300 hover:bg-violet-50"
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-md bg-white/[0.065] text-violet-200">
+                    <span className="grid h-10 w-10 place-items-center rounded-md bg-violet-50 text-violet-700">
                       <item.icon className="h-4 w-4" />
                     </span>
                     <span>
-                      <span className="block text-sm font-semibold text-slate-100">{item.title}</span>
+                      <span className="block text-sm font-semibold text-foreground">{item.title}</span>
                       <span className="block text-xs text-slate-500">{item.description}</span>
                     </span>
                   </Link>
@@ -177,29 +173,29 @@ export default async function HomePage() {
               </div>
             </aside>
 
-            <section className="border-b border-white/10 bg-slate-950/16 lg:border-b-0 lg:border-r">
-              <div className="flex min-h-14 flex-wrap items-center justify-between gap-2 border-b border-white/10 px-4 py-2 sm:h-14 sm:flex-nowrap sm:py-0">
+            <section className="border-b border-border bg-card lg:border-b-0 lg:border-r">
+              <div className="flex min-h-14 flex-wrap items-center justify-between gap-2 border-b border-border px-4 py-2 sm:h-14 sm:flex-nowrap sm:py-0">
                 <h2 className="font-semibold">Prompt Playground</h2>
                 <div className="flex items-center gap-2">
-                  <button className="inline-flex h-8 items-center gap-2 rounded-md border border-white/10 bg-white/[0.055] px-3 text-xs text-slate-300">
+                  <button className="inline-flex h-8 items-center gap-2 rounded-md border border-border bg-card px-3 text-xs text-muted-foreground transition hover:bg-accent hover:text-accent-foreground">
                     <Play className="h-3.5 w-3.5" />
                     Pin
                   </button>
-                  <button className="grid h-8 w-8 place-items-center rounded-md border border-white/10 bg-white/[0.055] text-slate-300">
+                  <button className="grid h-8 w-8 place-items-center rounded-md border border-border bg-card text-muted-foreground transition hover:bg-accent hover:text-accent-foreground">
                     <Settings2 className="h-3.5 w-3.5" />
                   </button>
-                  <button className="grid h-8 w-8 place-items-center rounded-md border border-white/10 bg-white/[0.055] text-slate-300">
+                  <button className="grid h-8 w-8 place-items-center rounded-md border border-border bg-card text-muted-foreground transition hover:bg-accent hover:text-accent-foreground">
                     <MoreHorizontal className="h-3.5 w-3.5" />
                   </button>
                 </div>
               </div>
               <div className="p-3 sm:p-5">
-                <div className="rounded-lg border border-white/10 bg-slate-900/35 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:p-4">
+                <div className="rounded-lg border border-border bg-muted/50 p-3 sm:p-4">
                   <div className="mb-3 flex items-center justify-between text-sm">
-                    <span className="font-medium text-slate-200">Input Prompt</span>
+                    <span className="font-medium text-foreground">Input Prompt</span>
                     <span className="text-xs text-slate-500">draft</span>
                   </div>
-                  <pre className="min-h-40 whitespace-pre-wrap rounded-lg border border-cyan-200/10 bg-[#0b1024]/70 p-3 font-mono text-xs leading-6 text-slate-300 shadow-[inset_0_0_24px_rgba(14,165,233,0.06)] sm:min-h-[220px] sm:p-5 sm:text-sm">
+                  <pre className="min-h-40 whitespace-pre-wrap rounded-lg border border-border bg-card p-3 font-mono text-xs leading-6 text-foreground sm:min-h-[220px] sm:p-5 sm:text-sm">
 {`1  Analyze the regression in payment reconciliation
 2  against serialized logs and contract tests.
 3  Identify the smallest safe change and include
@@ -207,7 +203,7 @@ export default async function HomePage() {
                   </pre>
                 </div>
 
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-400">
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
                   <span>Real-time tokenization:</span>
                   <span>Tokens: 35</span>
                 </div>
@@ -221,34 +217,33 @@ export default async function HomePage() {
               </div>
             </section>
 
-            <section className="bg-slate-950/16">
-              <div className="flex min-h-14 flex-wrap items-center justify-between gap-2 border-b border-white/10 px-4 py-2 sm:h-14 sm:flex-nowrap sm:py-0">
+            <section className="bg-card">
+              <div className="flex min-h-14 flex-wrap items-center justify-between gap-2 border-b border-border px-4 py-2 sm:h-14 sm:flex-nowrap sm:py-0">
                 <h2 className="font-semibold">Context Pipeline</h2>
                 <div className="flex items-center gap-2">
-                  <span className="rounded-md border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs text-cyan-100">
+                  <span className="rounded-md border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
                     Animated
                   </span>
-                  <button className="grid h-8 w-8 place-items-center rounded-md border border-white/10 bg-white/[0.055] text-slate-300">
+                  <button className="grid h-8 w-8 place-items-center rounded-md border border-border bg-card text-muted-foreground transition hover:bg-accent hover:text-accent-foreground">
                     <MoreHorizontal className="h-3.5 w-3.5" />
                   </button>
                 </div>
               </div>
               <div className="p-3 sm:p-5">
-                <div className="relative hidden min-h-[360px] overflow-hidden rounded-xl border border-cyan-200/12 bg-[#030716]/72 shadow-[inset_0_0_80px_rgba(14,165,233,0.08)] sm:block">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(34,211,238,0.18),transparent_38%),linear-gradient(rgba(56,189,248,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.04)_1px,transparent_1px)] bg-[size:auto,34px_34px,34px_34px]" />
+                <div className="relative hidden min-h-[360px] overflow-hidden rounded-xl border border-border bg-muted/40 sm:block">
                   <div className="absolute left-[8%] top-[42%] flex items-center gap-3">
                     <PipelineNode icon={FileInput} label="Input" sublabel="Data" />
                     <NeonLine className="w-12" />
                     <PipelineNode icon={Gauge} label="Tokenizer" />
                     <NeonLine className="w-12" />
-                    <div className="rounded-lg border border-cyan-300/55 bg-cyan-300/12 px-8 py-5 text-center shadow-[0_0_32px_rgba(34,211,238,0.45),inset_0_0_20px_rgba(34,211,238,0.14)]">
-                      <Layers3 className="mx-auto h-8 w-8 text-cyan-200" />
-                      <p className="mt-2 text-xs text-cyan-100">Context</p>
-                      <p className="text-xs text-slate-400">Window</p>
+                    <div className="rounded-lg border border-blue-200 bg-blue-50 px-8 py-5 text-center">
+                      <Layers3 className="mx-auto h-8 w-8 text-blue-700" />
+                      <p className="mt-2 text-xs font-medium text-blue-700">Context</p>
+                      <p className="text-xs text-muted-foreground">Window</p>
                     </div>
                   </div>
                   <div className="absolute right-[9%] top-[41%] flex items-center gap-3">
-                    <Bot className="h-12 w-12 text-cyan-100 drop-shadow-[0_0_12px_rgba(34,211,238,0.8)]" />
+                    <Bot className="h-12 w-12 text-blue-700" />
                     <NeonLine className="w-10" />
                     <PipelineNode icon={FileOutput} label="Output" sublabel="Generation" />
                   </div>
@@ -258,10 +253,10 @@ export default async function HomePage() {
                   <div className="absolute bottom-[13%] left-1/2 -translate-x-1/2">
                     <PipelineNode icon={FileInput} label="Data" sublabel="packets" />
                   </div>
-                  <div className="absolute left-[22%] top-[23%] h-28 w-[56%] rounded-t-full border-x-2 border-t-2 border-cyan-300/70 shadow-[0_0_18px_rgba(34,211,238,0.5)]" />
-                  <div className="absolute bottom-[22%] left-[19%] h-24 w-[62%] rounded-b-2xl border-x-2 border-b-2 border-cyan-300/70 shadow-[0_0_18px_rgba(34,211,238,0.5)]" />
+                  <div className="absolute left-[22%] top-[23%] h-28 w-[56%] rounded-t-full border-x-2 border-t-2 border-blue-300" />
+                  <div className="absolute bottom-[22%] left-[19%] h-24 w-[62%] rounded-b-2xl border-x-2 border-b-2 border-blue-300" />
                 </div>
-                <div className="rounded-lg border border-cyan-200/12 bg-[#030716]/72 p-4 shadow-[inset_0_0_60px_rgba(14,165,233,0.08)] sm:hidden">
+                <div className="rounded-lg border border-border bg-muted/40 p-4 sm:hidden">
                   <div className="grid gap-3">
                     {[
                       { icon: FileInput, label: "Goal", sublabel: "What the answer must solve" },
@@ -271,17 +266,17 @@ export default async function HomePage() {
                       { icon: FileOutput, label: "Output", sublabel: "Fix, risks, and checks" },
                     ].map((item, index, list) => (
                       <div key={item.label}>
-                        <div className="flex items-center gap-3 rounded-lg border border-cyan-300/20 bg-cyan-300/10 p-3">
-                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-slate-950/45 text-cyan-100">
+                        <div className="flex items-center gap-3 rounded-lg border border-border bg-card p-3">
+                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-blue-50 text-blue-700">
                             <item.icon className="h-5 w-5" />
                           </span>
                           <span>
-                            <span className="block text-sm font-semibold text-cyan-50">{item.label}</span>
-                            <span className="block text-xs leading-5 text-slate-400">{item.sublabel}</span>
+                            <span className="block text-sm font-semibold text-foreground">{item.label}</span>
+                            <span className="block text-xs leading-5 text-muted-foreground">{item.sublabel}</span>
                           </span>
                         </div>
                         {index < list.length - 1 ? (
-                          <div className="ml-5 h-4 w-px bg-cyan-300/45 shadow-[0_0_10px_rgba(34,211,238,0.65)]" />
+                          <div className="ml-5 h-4 w-px bg-blue-200" />
                         ) : null}
                       </div>
                     ))}
@@ -298,19 +293,19 @@ export default async function HomePage() {
           <Link
             key={item.href}
             href={item.href}
-            className="group rounded-xl border border-white/10 bg-white/[0.045] p-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-300/45 hover:bg-cyan-300/10 hover:shadow-[0_24px_80px_rgba(14,165,233,0.18)]"
+            className="group rounded-xl border border-border bg-card p-5 text-foreground shadow-soft transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg"
           >
             <div className="flex items-center justify-between">
-              <span className="grid h-11 w-11 place-items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 text-cyan-100">
+              <span className="grid h-11 w-11 place-items-center rounded-lg border border-blue-200 bg-blue-50 text-blue-700">
                 <item.icon className="h-5 w-5" />
               </span>
-              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-400">
+              <span className="rounded-full border border-border bg-muted px-3 py-1 text-xs text-muted-foreground">
                 {item.metric}
               </span>
             </div>
             <h3 className="mt-6 text-lg font-semibold">{item.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-400">{item.description}</p>
-            <span className="mt-5 inline-flex items-center gap-2 text-sm text-cyan-200">
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
+            <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary">
               Open
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
             </span>
@@ -330,13 +325,13 @@ function AiNewsScroller({
 }) {
   if (articles.length === 0) {
     return (
-      <div className="mb-5 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-slate-400 backdrop-blur-xl">
+      <div className="mb-5 rounded-lg border border-border bg-card px-4 py-3 text-sm text-muted-foreground shadow-soft">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <span className="inline-flex items-center gap-2 font-medium text-slate-200">
-            <Newspaper className="h-4 w-4 text-cyan-200" />
+          <span className="inline-flex items-center gap-2 font-medium text-foreground">
+            <Newspaper className="h-4 w-4 text-primary" />
             AI News
           </span>
-          <Link href="/news" className="text-cyan-200 transition hover:text-cyan-100">
+          <Link href="/news" className="font-medium text-primary transition hover:text-blue-700">
             Open news
           </Link>
         </div>
@@ -349,21 +344,21 @@ function AiNewsScroller({
   return (
     <section
       aria-label="Latest AI news"
-      className="mb-5 overflow-hidden rounded-lg border border-cyan-300/20 bg-cyan-300/[0.055] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl"
+      className="mb-5 overflow-hidden rounded-lg border border-border bg-card shadow-soft"
     >
       <div className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center">
         <Link
           href="/news"
-          className="flex shrink-0 items-center justify-between gap-4 rounded-md border border-white/10 bg-slate-950/45 px-3 py-2 text-sm font-semibold text-white transition hover:border-cyan-300/45"
+          className="flex shrink-0 items-center justify-between gap-4 rounded-md border border-border bg-muted/60 px-3 py-2 text-sm font-semibold text-foreground transition hover:border-blue-300 hover:bg-accent"
         >
           <span className="inline-flex items-center gap-2">
-            <Newspaper className="h-4 w-4 text-cyan-200" />
+            <Newspaper className="h-4 w-4 text-primary" />
             AI News
           </span>
-          <ArrowUpRight className="h-4 w-4 text-cyan-200" />
+          <ArrowUpRight className="h-4 w-4 text-primary" />
         </Link>
 
-        <div className="relative min-w-0 flex-1 overflow-hidden py-1 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
+        <div className="relative min-w-0 flex-1 overflow-hidden py-1">
           <div className="ai-news-marquee flex w-max items-center gap-3">
             {scrollingArticles.map((article, index) => (
               <Link
@@ -371,9 +366,9 @@ function AiNewsScroller({
                 href={article.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex h-10 max-w-[86vw] items-center gap-2 rounded-md border border-white/10 bg-white/[0.055] px-3 text-sm text-slate-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/10 sm:max-w-[360px]"
+                className="group inline-flex h-10 max-w-[86vw] items-center gap-2 rounded-md border border-border bg-muted/60 px-3 text-sm text-foreground transition hover:border-blue-300 hover:bg-accent sm:max-w-[360px]"
               >
-                <span className="rounded border border-cyan-300/20 bg-cyan-300/10 px-1.5 py-0.5 text-[11px] font-medium text-cyan-100">
+                <span className="rounded border border-blue-200 bg-blue-50 px-1.5 py-0.5 text-[11px] font-medium text-blue-700">
                   {article.source.name}
                 </span>
                 <span className="truncate">{article.title}</span>
@@ -382,8 +377,8 @@ function AiNewsScroller({
           </div>
         </div>
 
-        <div className="flex shrink-0 items-center gap-1.5 text-xs text-slate-400">
-          <Clock3 className="h-3.5 w-3.5 text-cyan-200" />
+        <div className="flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground">
+          <Clock3 className="h-3.5 w-3.5 text-primary" />
           <span>Updated {formatNewsTimestamp(updatedAt)}</span>
         </div>
       </div>
@@ -413,15 +408,15 @@ function PipelineNode({
 }) {
   return (
     <div className="text-center">
-      <div className="mx-auto grid h-12 w-12 place-items-center rounded-lg border border-cyan-300/60 bg-cyan-300/12 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.48),inset_0_0_18px_rgba(34,211,238,0.12)]">
+      <div className="mx-auto grid h-12 w-12 place-items-center rounded-lg border border-blue-200 bg-blue-50 text-blue-700">
         <Icon className="h-6 w-6" />
       </div>
-      <p className="mt-2 text-xs text-cyan-100">{label}</p>
-      {sublabel ? <p className="text-xs text-slate-400">{sublabel}</p> : null}
+      <p className="mt-2 text-xs font-medium text-blue-700">{label}</p>
+      {sublabel ? <p className="text-xs text-muted-foreground">{sublabel}</p> : null}
     </div>
   );
 }
 
 function NeonLine({ className }: { className?: string }) {
-  return <span className={`h-0.5 bg-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.85)] ${className}`} />;
+  return <span className={`h-0.5 bg-blue-300 ${className}`} />;
 }
