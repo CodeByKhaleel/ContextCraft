@@ -2,7 +2,7 @@
 
 ContextCraft is a polished AI cheatsheet and workflow playground for developers who want practical prompt engineering, context engineering, and reusable AI workflows in one place.
 
-It is built as a fast, static Next.js app with a dark glassmorphic interface, searchable prompt templates, concise AI concept pages, and copy-ready workflow patterns.
+It is built as a fast, static Next.js app with a clean, light interface, searchable prompt templates, concise AI concept pages, and copy-ready workflow patterns.
 
 ![ContextCraft homepage](public/screenshots/contextcraft-home.png)
 
@@ -41,10 +41,10 @@ ContextCraft includes reusable prompt formats for:
 
 ## Why It Looks Different
 
-The interface is designed like a developer cockpit instead of a plain documentation page:
+The interface is designed as a focused developer reference instead of a marketing page:
 
-- Dark-only visual system for consistency.
-- Glassmorphic panels and cards.
+- Light, readable visual system for repeat use.
+- Solid panels and cards with subtle borders.
 - Token-aware playground preview.
 - Context pipeline visualization.
 - Dense, readable layouts for repeat use.
@@ -124,7 +124,7 @@ The current version focuses on a strong AI cheatsheet experience:
 - Global keyboard search
 - Workflow guidance
 - Copy-ready prompts
-- Responsive dark UI
+- Responsive light UI
 - Live AI news from multiple RSS and Atom sources
 
 Accounts, saved prompts, AI API calls, and community submissions are intentionally left for later versions and more.
