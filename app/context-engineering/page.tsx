@@ -21,9 +21,9 @@ export default function ContextEngineeringPage() {
       />
       <div className="glass-panel mb-8 grid gap-3 p-5 md:grid-cols-5">
         {["Goal", "Facts", "Evidence", "Tools", "Verification"].map((item, index) => (
-          <div key={item} className="rounded-lg border border-white/10 bg-white/[0.045] p-4">
-            <span className="text-xs text-cyan-200/80">Step {index + 1}</span>
-            <h2 className="mt-2 font-semibold text-white">{item}</h2>
+          <div key={item} className="rounded-lg border border-border bg-muted/50 p-4">
+            <span className="text-xs font-medium text-primary">Step {index + 1}</span>
+            <h2 className="mt-2 font-semibold text-foreground">{item}</h2>
           </div>
         ))}
       </div>
