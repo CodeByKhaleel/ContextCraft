@@ -19,8 +19,8 @@ export function ConceptList({ concepts }: { concepts: ConceptPage[] }) {
               {titleCase(concept.section)}
             </span>
           </div>
-          <h2 className="text-lg font-semibold text-white">{concept.title}</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-400">{concept.summary}</p>
+          <h2 className="text-lg font-semibold text-foreground">{concept.title}</h2>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">{concept.summary}</p>
         </Link>
       ))}
     </div>
