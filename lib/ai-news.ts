@@ -215,6 +215,13 @@ function cleanText(value: string): string {
     .replace(/&amp;/gi, "&")
     .replace(/&quot;/gi, '"')
     .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&#8216;|&#x2018;/gi, "'")
+    .replace(/&#8217;|&#x2019;/gi, "'")
+    .replace(/&#8220;|&#x201c;/gi, '"')
+    .replace(/&#8221;|&#x201d;/gi, '"')
+    .replace(/&#8211;|&#x2013;/gi, "-")
+    .replace(/&#8212;|&#x2014;/gi, "-")
+    .replace(/&#160;|&#x00a0;/gi, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
